@@ -36,3 +36,14 @@ exports.signup = async (req, res) => {
     });
 
 };
+//implement logout
+exports.logout = async (req, res) => {
+    res.json({
+        message: "User logged out successfully!"
+    });
+}
+//get all user
+exports.getAllUsers = async (req, res) => {
+    const users = await User.find({});
+    res.json(users);
+  }
