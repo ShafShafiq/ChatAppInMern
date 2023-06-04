@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const chatroomSchema = new mongoose.Schema({
+const messageSchema = new mongoose.Schema({
     chatroom: {
         type: mongoose.Schema.ObjectId,
         required: 'chat room needed'
@@ -15,4 +15,4 @@ const chatroomSchema = new mongoose.Schema({
    
 });
 
-module.exports = mongoose.model('Message', chatroomSchema);
+module.exports = mongoose.model('Message', messageSchema);
