@@ -19,21 +19,31 @@ exports.login = async (req, res) => {
 
 exports.signup = async (req, res) => {
    const {name,email,password} = req.body;
-   const emailRegex = /@gamil.com|@yahoo.com/;
-   if(emailRegex.test(email)) throw "Email is not supported";
-   if(password.length < 6) throw "Password must have atleast 6 characters";
+//    /@gmail.com|@yahoo.com/;
+//    const emailRegex =  /^[A-Za-z0-9._%+-]+@(gmail|yahoo)\.com$/;
+//    if(emailRegex.test(email)) throw "Email is not supported";
+//    if(password.length < 6) throw "Password must have atleast 6 characters";
   console.log(name,email,password)
 
    const UserC = await User.findOne({email});
-   if(UserC) throw "Email already exists";
+   if(UserC){
+    res.error("User already exists");
+   }else{
+    const user = new User({name:name,email:email,password:sha256(password+process.env.HASH_SECRET)});
 
-   const user = new User({name:name,email:email,password:sha256(password+process.env.HASH_SECRET)});
+   await user.save().catch((err) => {
+    console.log(err);
+    res.status(500).json({
+        message: "Something went wrong",
+    })
+});
+   console.log(name,email,password);
+   res.send(
+         "User ["+name+"] registered successfully!"
+    );
+   }
 
-   await user.save();
-
-   res.json({
-         message: "User ["+name+"] registered successfully!"
-    });
+   
 
 };
 //implement logout

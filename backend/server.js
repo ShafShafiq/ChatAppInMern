@@ -3,6 +3,7 @@ require("dotenv").config();
 const mongoose = require('mongoose');
 const userRoutes = require('./Routes/user');
 const chatroomRoutes = require('./Routes/chatroom.js');
+const cors = require('cors');
 //import models
 require('./Models/Chatroom');
 require('./Models/Message');
@@ -17,6 +18,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
  
 //importing routes
 

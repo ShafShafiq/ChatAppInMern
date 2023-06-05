@@ -6,9 +6,8 @@ const cors = require('cors');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin: '*'
-}));
+app.use(cors());
+// app.use(require('cors')());
 
  
 //Set error handlers
