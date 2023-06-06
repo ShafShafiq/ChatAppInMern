@@ -4,6 +4,7 @@ const Chatroom = require('../Models/Chatroom');
 
 exports.createChatroom = async (req, res) => {
  const {name} = req.body
+    console.log(name);
 //  const nameRegex = /^[A-Za-z\s]+$/;
 //  if(!nameRegex){
 //     res.json({

@@ -8,6 +8,7 @@ import ChatroomPage from './Pages/ChatroomPage';
 import Navbar from './Pages/Navbar';
 import makeToast from './Toaster';
 import io from "socket.io-client";
+import TranslatorPage from './Pages/TranslatorPage';
 // import IndexPage from './Pages/IndexPage';
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
       <Route path="/login" element={<LoginPage setupSocket={setupSocket} />} />
       <Route path="/register" element={<RegisterPage/>}/>
       <Route path="/dashboard" element={<DashboardPage socket={socket}/>}/>
+      <Route path="/translator" element={<TranslatorPage/>}/>
       </Routes>
     </BrowserRouter>
   );

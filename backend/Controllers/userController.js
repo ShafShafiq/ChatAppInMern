@@ -18,18 +18,19 @@ exports.login = async (req, res) => {
 
 
 exports.signup = async (req, res) => {
-   const {name,email,password} = req.body;
+   const {name,email,password,Designation} = req.body;
+//    console.log(req.body);
 //    /@gmail.com|@yahoo.com/;
 //    const emailRegex =  /^[A-Za-z0-9._%+-]+@(gmail|yahoo)\.com$/;
 //    if(emailRegex.test(email)) throw "Email is not supported";
 //    if(password.length < 6) throw "Password must have atleast 6 characters";
-  console.log(name,email,password)
+  console.log(name,email,password,Designation)
 
    const UserC = await User.findOne({email});
    if(UserC){
     res.error("User already exists");
    }else{
-    const user = new User({name:name,email:email,password:sha256(password+process.env.HASH_SECRET)});
+    const user = new User({name:name,email:email,password:sha256(password+process.env.HASH_SECRET),Designation:Designation});
 
    await user.save().catch((err) => {
     console.log(err);

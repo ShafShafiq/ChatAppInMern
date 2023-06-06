@@ -102,6 +102,7 @@ export default function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [Designation, setDesignation] = useState('');
   const navigate = useNavigate();
 
   const handleNameChange = (e) => {
@@ -114,6 +115,9 @@ export default function RegisterPage() {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+  const handleDesignationChange = (e) => {
+    setDesignation(e.target.value);
   };
 
   const validateInputs = () => {
@@ -149,7 +153,8 @@ export default function RegisterPage() {
       .post('http://localhost:4000/users/signup', {
         name,
         email,
-        password
+        password,
+        Designation,
       })
       .then((res) => {
         makeToast('success', res.data);
@@ -177,8 +182,12 @@ export default function RegisterPage() {
           <label htmlFor="password">Password</label>
           <input type="password" onChange={handlePasswordChange} name="password" id="password" placeholder="" />
         </div>
+        <div className="inputGroup">
+          <label htmlFor="Designation">Designation</label>
+          <input type="Text" onChange={handleDesignationChange} name="Designation" id="Designation" placeholder="enter Designation" />
+        </div>
       </div>
-      <button onClick={register}>Register</button>
+      <button onClick={register}>{Designation}</button>
     </div>
   );
 }

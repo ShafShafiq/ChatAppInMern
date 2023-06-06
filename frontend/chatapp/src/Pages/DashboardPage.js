@@ -2,8 +2,52 @@ import React from 'react'
 import { useState , useEffect} from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import makeToast from '../Toaster';
 
 export default function DashboardPage(props) {
+  const [chatroomname, setChatroomname] = useState('');
+  const navigate = useNavigate();
+
+  //handle chatroomname
+  const handleinput = (e) => {
+    setChatroomname(e.target.value)
+  }
+  //create chatroom
+  // const createChatroom = () => {
+  //   axios
+  //   .post('http://localhost:4000/chatroom/make', {
+  //     chatroomname,
+  //   })
+  //   .then((res) => {
+  //     makeToast('success', res.data);
+  //     navigate('/DashboardPage');
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     makeToast('error', err.message);
+  //   });
+  // }
+  const createChatroom = () => {
+    console.log("chatroomname ===== "+chatroomname)
+    axios
+      .post('http://localhost:4000/chatroom/make', {
+        name: chatroomname,
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('C_token')}`,
+        },
+      })
+      .then((res) => {
+        makeToast('success', res.data);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log(err);
+        makeToast('error', err.message);
+      });
+  };
+  
 
 const [chatrooms, setChatrooms] = useState([]);
 // props.setupSocket();
@@ -39,12 +83,12 @@ const getAllChatrooms = () => {
 
           <div className="inputGroup">
                 <label htmlFor="chatroomname">Chatroom Name</label>
-                <input type="text" name="chatroomname" id="chatroomname" placeholder="" />
+                <input onChange={handleinput} type="text" name="chatroomname" id="chatroomname" placeholder="" />
           </div>
            
           
     </div>
-    <button>Create ChatRoom</button>
+    <button onClick={createChatroom}>Create ChatRoom</button>
 
         <div className='chatrooms'>
          {chatrooms.map((chatroom ) => {

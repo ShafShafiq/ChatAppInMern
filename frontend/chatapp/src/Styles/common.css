@@ -150,3 +150,54 @@ button:hover {
   cursor: pointer;
   transform: skew(-10deg);
 }
+.translator{
+padding-top: 1rem;
+padding-bottom: 2rem;
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin-bottom: 1rem;
+
+}
+
+
+.selectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.selectors select {
+  margin-left: 10px;
+  padding: 2px;
+  border-radius: 4px;
+  
+  
+}
+
+.selectors select:focus {
+  outline: none;
+  border: 1px solid #8e7dd3;
+}
+
+.selectors select option {
+  background-color: white;
+  color: black;
+}
+
+.selectors select option:hover {
+  background-color: #a599ea;
+  color: white;
+}
+#translatorheading{
+  
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+  background-color: #8e7dd3;
+  border-radius: 20px;
+}
+

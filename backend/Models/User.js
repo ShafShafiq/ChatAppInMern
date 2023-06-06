@@ -8,9 +8,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: 'Please enter an the email',
     },
+    
     password:{
         type: String,
         required: 'Please enter a password',
+    },
+    Designation:{
+        type: String,
+        required: 'Please enter a Designation',
     },
 },{timestamps: true});
 
