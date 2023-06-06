@@ -107,7 +107,46 @@ button:hover {
 }
 
 
-a {
+
+
+
+
+.navbar {
+  background-color: #8e7dd3; /* Update background color here */
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navbar a {
+  color: #fff; /* Update text color here */
   text-decoration: none;
-  color: #333;
+}
+
+.navbar a:hover {
+  color: #cac4e9; /* Update hover color here */
+}
+#logout-button{
+  background-color: #ed2a2a;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+#logout-button.hover{
+  background-color: #f5a777;
+  cursor: pointer;
+  transform: skew(-10deg);
 }
